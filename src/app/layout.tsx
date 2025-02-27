@@ -12,7 +12,7 @@ export const metadata: Metadata = {
       'Will Johnson - Software engineer',
   },
   description:
-    'I’m Will, a software engineer and real human being based in New York City. I am a lifelong learner focused on building the future.',
+    'I’m Will, a software engineer and real human being based in New York City. I am a lifelong student in pursuit of mastering my craft, leveling up those around me and focused on building the future.',
   alternates: {
     types: {
       'application/rss+xml': `${process.env.NEXT_PUBLIC_SITE_URL}/feed.xml`,

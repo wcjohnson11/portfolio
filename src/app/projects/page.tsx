@@ -16,7 +16,7 @@ const projects = [
   {
     name: 'Atomic Lore',
     description:
-      'A Web3 platform for creating cryptographically attested provenance for NFTs',
+      'A Web3 platform for creating, indexing and exploring cryptographically attested provenance for NFTs',
     link: { href: 'https://atomiclore.io', label: 'atomiclore.io' },
     logo: logoAtomicForm,
   },
@@ -30,7 +30,7 @@ const projects = [
   {
     name: 'Allships',
     description:
-      'The Webapp for the Allships Creative Community, including a Web3 integrated ecommerce experience with discounts for holders of Allships NFTs',
+      'The Webapp for the Allships Creative Community, including a Web3 integrated ecommerce experience with token-gated discounts for holders of Allships NFTs',
     link: { href: 'https://allships.co', label: 'allships.co' },
     logo: allshipsLogo,
   },

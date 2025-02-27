@@ -1,46 +1,48 @@
 import Image, { type ImageProps } from 'next/image'
 import Link from 'next/link'
-import clsx from 'clsx'
 
 import { Button } from '@/components/Button'
 import { Card } from '@/components/Card'
 import { Container } from '@/components/Container'
 import {
   GitHubIcon,
-  InstagramIcon,
   LinkedInIcon,
   XIcon,
 } from '@/components/SocialIcons'
-import logoAirbnb from '@/images/logos/airbnb.svg'
-import logoFacebook from '@/images/logos/facebook.svg'
-import logoPlanetaria from '@/images/logos/planetaria.svg'
 import logoAtomicForm from '@/images/logos/atomicform.svg'
 import logoMikMak from '@/images/logos/mikmak.svg'
 import logoSegment from '@/images/logos/segment.svg'
 import logoAllships from '@/images/logos/allshipsNexus.png'
 import logoMindMakers from '@/images/logos/mindmakers.png'
-import logoJavascript from '@/images/logos/javascript.svg'
-import logoTypescript from '@/images/logos/typescript.svg'
-import logoNode from '@/images/logos/node.svg'
-import logoReact from '@/images/logos/react.svg'
-import logoNext from '@/images/logos/nextjs.svg'
-import logoRemix from '@/images/logos/remix.svg'
-import logoTailwind from '@/images/logos/tailwind.svg'
-import logoSolidity from '@/images/logos/solidity.svg'
-import logoGraphQL from '@/images/logos/graphql.png'
-import logoWagmiLight from '@/images/logos/wagmi-light.svg'
-import logoWagmiDark from '@/images/logos/wagmi-dark.svg'
-import logoViemLight from '@/images/logos/viem-light.png'
-import logoViemDark from '@/images/logos/viem-dark.png'
 
 import Avatar from '@/images/avatar.jpg'
-import image1 from '@/images/photos/image-1.jpg'
-import image2 from '@/images/photos/image-2.jpg'
-import image3 from '@/images/photos/image-3.jpg'
-import image4 from '@/images/photos/image-4.jpg'
-import image5 from '@/images/photos/image-5.jpg'
-import { type ArticleWithSlug, getAllArticles } from '@/lib/articles'
-import { formatDate } from '@/lib/formatDate'
+
+interface ProjectType {
+  name: string
+  description: string
+  link: {href: string, label: string}
+}
+
+const projects: ProjectType[] = [
+  {
+    name: 'Atomic Lore',
+    description:
+      'A Web3 platform for creating, indexing and exploring cryptographically attested provenance for NFTs',
+    link: { href: 'https://atomiclore.io', label: 'atomiclore.io' },
+  },
+  {
+    name: 'Allships',
+    description:
+      'The Webapp for the Allships Creative Community, including a Web3 integrated ecommerce experience with token-gated discounts for holders of Allships NFTs',
+    link: { href: 'https://allships.co', label: 'allships.co' },
+  },
+  {
+    name: 'Drip Drop',
+    description:
+      'A Webapp for mint and post-mint interactions with the Drip Drop NFT Collection',
+    link: { href: 'https://dripdrop.allships.co', label: 'dripdrop.allships.co' },
+  },
+]
 
 function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
@@ -101,17 +103,14 @@ function ArrowDownIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   )
 }
 
-function Article({ article }: { article: ArticleWithSlug }) {
+function ProjectEntry({ entry }: { entry: ProjectType }) {
   return (
-    <Card as="article">
-      <Card.Title href={`/articles/${article.slug}`}>
-        {article.title}
+    <Card>
+      <Card.Title href={entry.link.href} openInNew={true}>
+        {entry.name}
       </Card.Title>
-      <Card.Eyebrow as="time" dateTime={article.date} decorate>
-        {formatDate(article.date)}
-      </Card.Eyebrow>
-      <Card.Description>{article.description}</Card.Description>
-      <Card.Cta>Read article</Card.Cta>
+      <Card.Description>{entry.description}</Card.Description>
+      <Card.Cta>{entry.link.label}</Card.Cta>
     </Card>
   )
 }
@@ -177,8 +176,8 @@ function Role({ role }: { role: Role }) {
 
   return (
     <li className="flex gap-4">
-      <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full ring-1 shadow-md shadow-zinc-800/5 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 dark:ring-0">
-        <Image src={role.logo} alt="" className="h-7 w-7" unoptimized />
+      <div className="relative mt-1 flex h-10 w-10 flex-none items-center justify-center rounded-full ring-1 shadow-md shadow-zinc-800/5 ring-zinc-900/5 dark:border dark:border-zinc-700/50 dark:bg-zinc-800 bg-zinc-400 dark:ring-0">
+        <Image src={role.logo} alt="" className="h-auto w-7" unoptimized />
       </div>
       <dl className="flex flex-auto flex-wrap gap-x-2">
         <dt className="sr-only">Company</dt>
@@ -210,30 +209,21 @@ function Resume() {
       title: 'Software Engineer',
       logo: logoAtomicForm,
       start: '2021',
-      end: {
-        label: 'Present',
-        dateTime: new Date().getFullYear().toString(),
-      },
+      end: '2025',
     },
     {
       company: 'Allships',
       title: 'Software Engineer',
       logo: logoAllships,
       start: '2021',
-       end: {
-        label: 'Present',
-        dateTime: new Date().getFullYear().toString(),
-      },
+       end: '2025',
     },
     {
       company: 'WCJ Freelance',
       title: 'Software Engineer',
       logo: Avatar,
       start: '2021',
-       end: {
-        label: 'Present',
-        dateTime: new Date().getFullYear().toString(),
-      },
+       end: '2025',
     },
     {
       company: 'MikMak',
@@ -280,35 +270,84 @@ function Resume() {
 function Tech() {
 
   const TechLibs = [
-    {name: "Javascript", logo: logoJavascript},
-    {name: "Typescript", logo: logoTypescript},
-    {name: "Node", logo: logoNode},
-    {name: "React", logo: logoReact},
-    {name: "Next.js", logo: logoNext},
-    {name: "Remix", logo: logoRemix},
-    {name: "Tailwind", logo: logoTailwind},
-    {name: "Solidity", logo: logoSolidity},
-    {name: "GraphQL", logo: logoGraphQL},
-    {name: "Wagmi", logo: logoWagmiLight, logoDark: logoWagmiDark},
-    {name: "Viem", logo: logoViemLight, logoDark: logoViemDark},
+    {name: "Javascript"
+      // , logo: logoJavascript
+    },
+    {name: "Typescript"
+      // , logo: logoTypescript
+    },
+    {name: "Node"
+      // , logo: logoNode
+    },
+    {name: "React"
+      // , logo: logoReact
+    },
+    {name: "Next.js"
+      // , logo: logoNext
+    },
+    {name: "Remix"
+      // , logo: logoRemix
+    },
+    {name: "Tailwind"
+      // , logo: logoTailwind
+    },
+    {name: "Solidity"
+      // , logo: logoSolidity
+    },
+    {name: "GraphQL"
+      // , logo: logoGraphQL
+    },
+    {name: "Wagmi/Viem"
+      // , logo: logoWagmiLight, logoDark: logoWagmiDark
+    },
+    {name: "D3.js"
+      // , logo: logoViemLight, logoDark: logoViemDark
+    },
+    {name: "Jira"
+      // , logo: logoJira
+    },
   ]
 
   return (
     <div className="mt-16 sm:mt-20">
-      <h1>Technology I use</h1>
-      <h3 className="mt-6 text-base text-zinc-600 dark:text-zinc-400">Some of my favorite tech:</h3>
-      {TechLibs.map(lib => (
-        <div key={lib.name}>
-          <h2>{lib.name}</h2>
-          <Image src={lib.logo} alt={lib.name} className="h-7 w-auto" unoptimized/>
-          </div>
-      ))}
+      <h1 className="text-xl font-bold">Technology I use</h1>
+      <h3 className="mt-6 text-base text-zinc-600 dark:text-zinc-400">Not an exhaustive list but here are some of my most commonly used tools, technologies and libraries:</h3>
+
+      <ul role="list" className="mt-3 grid grid-cols-1 gap-2 sm:grid-cols-3 sm:gap-3 lg:grid-cols-4">
+        {TechLibs.map((lib) => (
+          <li key={lib.name} className="col-span-1 flex border border-gray-500 rounded-md shadow-sm bg-gray-300 dark:bg-gray-600 text-black dark:text-white">
+            {/* <div
+              className={
+                'flex w-16 shrink-0 items-center justify-center rounded-l-md text-sm font-medium text-white bg-white'
+              }
+            >
+              <Image src={lib.logo} alt={lib.name} className="h-7 w-auto" unoptimized/>
+            </div> */}
+            <div className="flex flex-1 items-center justify-between truncate">
+              <div className="flex-1 truncate px-2 py text-xs">
+                <p className="font-medium">
+                  {lib.name}
+                </p>
+                {/* <p className="text-gray-500">{project.members} Members</p> */}
+              </div>
+              {/* <div className="shrink-0 pr-2">
+                <button
+                  type="button"
+                  className="inline-flex size-8 items-center justify-center rounded-full bg-transparent bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2"
+                >
+                  <span className="sr-only">Open options</span>
+                  <EllipsisVerticalIcon aria-hidden="true" className="size-5" />
+                </button>
+              </div> */}
+            </div>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
 
 export default async function Home() {
-  let articles = (await getAllArticles()).slice(0, 4)
 
   return (
     <>
@@ -318,7 +357,7 @@ export default async function Home() {
             Software engineer and real human being.
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Will, a software engineer and real human being based in New York City. I am a lifelong student in pursuit of mastering my craft, focused on building the future.
+            I’m Will, a software engineer and real human being based in New York City. I am a lifelong student in pursuit of mastering my craft, leveling up those around me and focused on building the future.
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink href="https://x.com/wcj111" aria-label="Follow on X" icon={XIcon} />
@@ -337,13 +376,16 @@ export default async function Home() {
       </Container>
       <Container className="mt-24 md:mt-28">
         <Tech />
+        {/* <SectionTechnology /> */}
       </Container>
       <Container className="mt-24 md:mt-28">
         <div className="mx-auto grid max-w-xl grid-cols-1 gap-y-20 lg:max-w-none lg:grid-cols-2">
-          <div className="flex flex-col gap-16">
-            {articles.map((article) => (
-              <Article key={article.slug} article={article} />
+          <div className="flex flex-col gap-8">
+            <h2 className="text-xl font-bold">Latest Projects</h2>
+            {projects.map((project) => (
+              <ProjectEntry key={project.name} entry={project} />
             ))}
+            <Button className="mt-8" href={`/projects`}>See more Recent Projects</Button>
           </div>
           <div className="space-y-10 lg:pl-16 xl:pl-24">
             <Newsletter />
