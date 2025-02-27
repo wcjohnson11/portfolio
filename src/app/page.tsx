@@ -66,7 +66,7 @@ function MailIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
     </svg>
   )
 }
-
+// @ts-ignore
 function BriefcaseIcon(props: React.ComponentPropsWithoutRef<'svg'>) {
   return (
     <svg
