@@ -354,10 +354,10 @@ export default async function Home() {
       <Container className="mt-9">
         <div className="max-w-2xl">
           <h1 className="text-4xl font-bold tracking-tight text-zinc-800 sm:text-5xl dark:text-zinc-100">
-            Software engineer and real human being.
+            Will Johnson, a Software Engineer building the future
           </h1>
           <p className="mt-6 text-base text-zinc-600 dark:text-zinc-400">
-            I’m Will, a software engineer and real human being based in New York City. I am a lifelong student in pursuit of mastering my craft, leveling up those around me and focused on building the future.
+            Hi! I’m Will, a software engineer based in New York City. I am a lifelong student in pursuit of mastering my craft, leveling up those around me and focused on building the future
           </p>
           <div className="mt-6 flex gap-6">
             <SocialLink href="https://x.com/wcj111" aria-label="Follow on X" icon={XIcon} />
