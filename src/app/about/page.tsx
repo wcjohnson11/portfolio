@@ -76,12 +76,10 @@ export default function About() {
               I’ve loved making things, both physical and digital for as long as I can remember, and have been making websites and exploring the internet since my earliest memories.
             </p>
             <p>
-              I've always loved solving difficult problems, finding balance outside of my comfort zone and understanding how things work.
-              Whether it was how my computer connected to the internet and how I could build on it or how to fix bikes and repair surfboards, I've always been driven to understand things and use that understanding to better interact with the world around me.
+              I enjoy solving difficult problems, finding balance outside of my comfort zone and understanding how things work. My passion for learning, acquiring skills, refining them and sharing that knowledge has maintained throughout my life.
             </p>
             <p>
-              My passion for learning, acquiring skills, refining them and sharing that knowledge and the fruits of my skills has maintained throughout my life.
-              I've worked in many different fields but in 2016 I committed myself full-time to working in Software and the Internet and have since worked in several different sectors, primarily Data, Analytics, E-Commerce and Web3. Across all of these expereinces, I have continued to find new problems to solve and new skills to master. I've also had the opportunity to build and lead several teams of talented engineers and designers and analysts in this time.
+              I've worked in many different fields but in 2016 I committed myself full-time to working in Software and the Internet. I’ve worked in a few different verticals, primarily Data, Analytics, E-Commerce and Web3.
             </p>
             <p>
               Since 2021 I've been immersed in developing websites, smart contracts and products for artists and collectors in the Web3 ecosystem. In this time I've had the opportunity to learn many new technologies, develop novel experiences, build teams and products and meet a lot of really great people along the way.
